@@ -200,3 +200,6 @@
 ;;; no-byte-compile: t
 ;;; End:
 (put 'erase-buffer 'disabled nil)
+
+;; set theme
+(load-theme 'monokai t)
