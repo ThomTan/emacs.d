@@ -202,4 +202,43 @@
 (put 'erase-buffer 'disabled nil)
 
 ;; set theme
-(load-theme 'monokai t)
+(load-theme 'darktooth t)
+
+;; set chinese xiaohe shuangpin IM
+;; (with-eval-after-load 'pyim
+;;  (setq pyim-default-scheme 'xiaohe-shuangpin)
+;; )
+
+;; set org agenda
+(setq org-agenda-files (quote ("~/github/Notes/agenda/gtd.org")))
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+;; set open init-file
+(defun open-init-file ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+;; set open gtd-file
+(defun open-gtd-file ()
+  (interactive)
+  (find-file "~/github/Notes/agenda/gtd.org"))
+
+;; set kbd init-file
+(global-set-key (kbd "<f3>") 'open-init-file)
+
+;; set kbd gtd-file
+(global-set-key (kbd "<f4>") 'open-gtd-file)
+
+;; bug Warning (flymake): Disabling backend flymake-proc-legacy-flymake because (error Cant find a suitable init function)
+(remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
+
+;; set lazyflymake
+(with-eval-after-load 'wucuo
+  ;; 4 second
+  (setq wucuo-update-interval 4))
+(with-eval-after-load 'lazyflymake
+  ;; 2 seconds
+  (setq lazyflymake-update-interval 3))
+
+;; set w3m
+;;(setq w3m-default-desplay-inline-images t)
